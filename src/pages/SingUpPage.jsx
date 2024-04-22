@@ -17,7 +17,9 @@ const SingUpPage = () => {
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+
+        form.reset();
+
         // update user
         updateProfile(user, {
           displayName: name,

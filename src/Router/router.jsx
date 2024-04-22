@@ -4,6 +4,7 @@ import AddCoffeePage from "../pages/AddCoffeePage";
 import HomePage from "../pages/HomePage";
 import SingUpPage from "../pages/SingUpPage";
 import UpdateCoffeePage from "../pages/UpdateCoffeePage";
+import UsersPage from "../pages/UsersPage";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/singUp",
         element: <SingUpPage />,
+      },
+      {
+        path: "/users",
+        element: <UsersPage />,
+        loader: () => fetch("http://localhost:5000/users"),
       },
     ],
   },
