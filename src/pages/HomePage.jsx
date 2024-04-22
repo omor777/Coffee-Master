@@ -1,8 +1,11 @@
+import Coffees from "../components/Coffees/Coffees";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div>
+      <Coffees />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
