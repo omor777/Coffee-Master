@@ -1,4 +1,10 @@
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+
 const UpdateCoffeePage = () => {
+  const { _id, name, chef, supplier, taste, category, details, photo } =
+    useLoaderData();
+
   const handleUpdateCoffee = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,10 +25,8 @@ const UpdateCoffeePage = () => {
       photo,
     };
 
-    console.log(updatedCoffee);
-
-    fetch("http://localhost:5000/coffees", {
-      method: "POST",
+    fetch(`http://localhost:5000/coffees/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -30,7 +34,13 @@ const UpdateCoffeePage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Update Successful!",
+            text: "You update the coffee!",
+            icon: "success",
+          });
+        }
       });
   };
   return (
@@ -59,6 +69,7 @@ const UpdateCoffeePage = () => {
                 type="text"
                 name="name"
                 id="name"
+                defaultValue={name}
                 placeholder="Enter coffee name"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />
@@ -74,6 +85,7 @@ const UpdateCoffeePage = () => {
                 type="text"
                 name="chef"
                 id="chef"
+                defaultValue={chef}
                 placeholder="Enter coffee chef"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />
@@ -92,6 +104,7 @@ const UpdateCoffeePage = () => {
                 type="text"
                 name="supplier"
                 id="supplier"
+                defaultValue={supplier}
                 placeholder="Enter coffee supplier"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />
@@ -107,6 +120,7 @@ const UpdateCoffeePage = () => {
                 type="text"
                 name="taste"
                 id="taste"
+                defaultValue={taste}
                 placeholder="Enter coffee taste"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />
@@ -125,6 +139,7 @@ const UpdateCoffeePage = () => {
                 type="text"
                 name="category"
                 id="category"
+                defaultValue={category}
                 placeholder="Enter coffee category"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />
@@ -140,6 +155,7 @@ const UpdateCoffeePage = () => {
                 type="text"
                 name="details"
                 id="details"
+                defaultValue={details}
                 placeholder="Enter coffee details"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />
@@ -158,6 +174,7 @@ const UpdateCoffeePage = () => {
                 type="url"
                 name="photo"
                 id="photo"
+                defaultValue={photo}
                 placeholder="Enter photo URL"
                 className="placeholder:text-[#1B1A1A99] input border-none"
               />

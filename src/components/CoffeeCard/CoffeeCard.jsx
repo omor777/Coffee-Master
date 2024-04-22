@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { FaEye, FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
@@ -38,9 +39,6 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
     });
   };
 
-  const handleEditCoffee = () => {
-    Swal.fire("SweetAlert2 is working!");
-  };
   return (
     <div className="bg-[#F5F4F1] p-8 rounded-xl flex  items-center justify-between">
       <figure>
@@ -61,12 +59,11 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
         <button className="bg-[#D2B48C] p-2.5 rounded">
           <FaEye className="text-white text-xl" />
         </button>
-        <button
-          onClick={handleEditCoffee}
-          className="bg-[#3C393B] p-2.5 rounded"
-        >
-          <FaPen className="text-white text-xl" />
-        </button>
+        <Link to={`/updateCoffee/${_id}`}>
+          <button className="bg-[#3C393B] p-2.5 rounded">
+            <FaPen className="text-white text-xl" />
+          </button>
+        </Link>
         <button
           onClick={() => handleDeleteCoffee(_id)}
           className="bg-[#EA4744] p-2.5 rounded"
