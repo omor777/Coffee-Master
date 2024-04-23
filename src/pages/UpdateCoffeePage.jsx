@@ -25,7 +25,7 @@ const UpdateCoffeePage = () => {
       photo,
     };
 
-    fetch(`http://localhost:5000/coffees/${_id}`, {
+    fetch(`https://coffee-master-server-kappa.vercel.app/coffees/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

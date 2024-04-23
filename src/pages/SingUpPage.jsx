@@ -32,7 +32,7 @@ const SingUpPage = () => {
         const creationTime = user.metadata.creationTime;
         const newUser = { name, email, creationTime };
         // send user to the server
-        fetch("http://localhost:5000/users", {
+        fetch("https://coffee-master-server-kappa.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
